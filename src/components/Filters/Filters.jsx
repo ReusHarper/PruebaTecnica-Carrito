@@ -6,8 +6,6 @@ import './Filters.css';
 const Filters = () => {
     const { filters, setFilters } = useFilters();
     
-    // const [minPrice, setMinPrice] = useState(0) // estado local
-    
     const minPriceFilterId = useId();
     const categoryFilterId = useId();
 
@@ -20,9 +18,6 @@ const Filters = () => {
     }
 
     const handleChangeCategory = (event) => {
-        // aqui algo huele mal
-        // estamos pasando la funcion de actualizar el estado
-        // nativa de react a un componente hijo
         setFilters( prevState => ({
             ...prevState,
             category: event.target.value
@@ -35,17 +30,17 @@ const Filters = () => {
                 <label htmlFor = "price">Precio mínimo:</label>
                 <input 
                     type     = "range"
-                    id       = {minPriceFilterId}
+                    id       = { minPriceFilterId }
                     min      = "0"
                     max      = "1000"
-                    onChange = {handleChangeMinPrice}
-                    value    = {filters.minPrice}
+                    onChange = { handleChangeMinPrice }
+                    value    = { filters.minPrice }
                 />
                 <span>${filters.minPrice}</span>
             </div>
             <div>
-                <label htmlFor = {categoryFilterId}>Categoría</label>
-                <select id = {categoryFilterId} onChange = {handleChangeCategory}>
+                <label htmlFor = { categoryFilterId }>Categoría</label>
+                <select id = { categoryFilterId } onChange = { handleChangeCategory }>
                     <option value = "all">Todas</option>
                     <option value = "laptops">Portátiles</option>
                     <option value = "smartphones">Celuláres</option>

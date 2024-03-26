@@ -1,0 +1,15 @@
+.header {
+    width     : 100%;
+    max-width : 100%;
+    overflow  : hidden;
+    position  : relative;
+}
+
+.header__banner {
+    z-index         : 100;
+    width           : 100%;
+    max-height      : 19em;
+    display         : block;
+    object-fit      : cover;
+    object-position : top;
+}

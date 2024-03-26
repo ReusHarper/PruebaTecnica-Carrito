@@ -1,17 +1,12 @@
-/* eslint-disable react/prop-types */
-import './Footer.css'
-import { useCart } from '@/hooks/useCart'
+import './Footer.css';
 
 const Footer = () => {
-    const { cart } = useCart()
-    
     return (
-        <footer className='footer'>
-            {
-                JSON.stringify(cart, null, 2)
-            }
+        <footer className = 'footer'>
+            <h4>Prueba técnica de React ⚛️</h4>
+            <p><span>Creada por Arturo Espinosa Guadarrama</span></p>
         </footer>
     )
 }
 
-export default Footer
+export default Footer;

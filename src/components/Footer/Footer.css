@@ -1,23 +1,25 @@
 .footer {
 	position        : fixed;
-	left            : 16px;
-	bottom          : 16px;
+	left            : 1em;
+	bottom          : 1em;
 	text-align      : left;
 	background      : rgba(0, 0, 0, 0.7);
-	padding         : 8px 24px;
-	border-radius   : 32px;
+	padding         : 0.5em 1.5em;
+	border-radius   : 2em;
 	opacity         : 0.95;
-	backdrop-filter : blur(8px);
+	backdrop-filter : blur(0.5em);
 }
 
 .footer span {
-	font-size : 14px;
+	padding   : 0.2em;
+	font-size : 0.9em;
 	color     : #09f;
 	opacity   : 0.8;
 }
 
 .footer h4,
 .footer h5 {
+	padding : 0.2em;
 	margin  : 0;
 	display : flex;
 }

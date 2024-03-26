@@ -1,11 +1,17 @@
 .cart {
-    background : #000;
-    display    : none;
-    padding    : 2em;
-    position   : fixed;
-    right      : 0;
-    top        : 0;
-    width      : 12.5em;
+    background    : #ed597c;
+    display       : none;
+    padding       : 4em 2em;
+    position      : fixed;
+    top           : 0;
+    right         : -100%;
+    width         : 12.5em;
+    height        : 100%;
+    overflow-y    : auto;
+    border-radius : 5em 0 0 5em;
+    transition    : 850ms;
+
+    display : block;
 }
 
 .cart img {
@@ -50,7 +56,18 @@
     scale : 1.1;
 }
 
-.cart-button~input:checked~.cart {
+/* .cart-button~input:checked~.cart {
     height  : 100%;
     display : block;
+} */
+
+.cart.active {
+    right      : 0%;
+    transition : 450ms;
 }
+
+/* .active_box{
+    opacity        : 1;
+    left           : 0px;
+    pointer-events : fill;
+} */
