@@ -1,9 +1,10 @@
-/* eslint-disable react/prop-types */
 import { AddToCartIcon } from '@/components/Icons/Icons';
 import { useCart } from '@/hooks/useCart';
+import PropTypes from 'prop-types';
 import './Products.css';
 
 export const Products = ({ products }) => {
+
     const { addToCart } = useCart();
     
     return (
@@ -31,3 +32,7 @@ export const Products = ({ products }) => {
         </main>
     );
 }
+
+Products.propTypes = {
+    products : PropTypes.array.isRequired,
+};

@@ -1,0 +1,28 @@
+.pagination {
+    width           : 100%;
+    display         : flex;
+    justify-content : center;
+    align-items     : center;
+    gap             : 2em;
+}
+
+.pagination > li.page-item {
+    display          : flex;
+    justify-content  : center;
+    align-items      : center;
+    min-width        : 2.5em;
+    min-height       : 2.5em;
+    background-color : rgb(81, 76, 76);
+    border-radius    : 0.75em;
+}
+
+.pagination__buttons {
+    display          : grid;
+    justify-content  : center;
+    gap              : 1em;
+    padding          : 1em;
+}
+
+.pagination__button > * {
+    max-width: 5rem !important;
+}

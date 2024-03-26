@@ -26,7 +26,7 @@ const Filters = () => {
 
     return (
         <section className = 'filters'>
-            <div>
+            <div className = 'filters__price'>
                 <label htmlFor = "price">Precio mínimo:</label>
                 <input 
                     type     = "range"
@@ -38,15 +38,17 @@ const Filters = () => {
                 />
                 <span>${filters.minPrice}</span>
             </div>
-            <div>
-                <label htmlFor = { categoryFilterId }>Categoría</label>
-                <select id = { categoryFilterId } onChange = { handleChangeCategory }>
-                    <option value = "all">Todas</option>
-                    <option value = "laptops">Portátiles</option>
-                    <option value = "smartphones">Celuláres</option>
-                    <option value = "fragrances">Perfúmes</option>
-                    <option value = "skincare">Salud y Belleza</option>
-                </select>
+            <div className = 'filters__category'>
+                <label className = 'category__label' htmlFor = { categoryFilterId }>Categoría</label>
+                <div className = 'category__select'>
+                    <select id = { categoryFilterId } onChange = { handleChangeCategory }>
+                        <option value = "all">Todas</option>
+                        <option value = "laptops">Portátiles</option>
+                        <option value = "smartphones">Celuláres</option>
+                        <option value = "fragrances">Perfúmes</option>
+                        <option value = "skincare">Salud y Belleza</option>
+                    </select>
+                </div>
             </div>
         </section>
     )

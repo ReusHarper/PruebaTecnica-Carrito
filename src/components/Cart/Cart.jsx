@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
-import { useId, useState } from "react";
-import { useCart } from "@/hooks/useCart";
-import { CartIcon, ClearCartIcon } from "@/components/Icons/Icons";
-import "./Cart.css";
+import { useEffect, useId, useState, useRef } from 'react';
+import { useCart } from '@/hooks/useCart';
+import { CartIcon, ClearCartIcon } from '@/components/Icons/Icons';
+import './Cart.css';
 
 const CartItem = ({ thumbnail, price, title, quantity, addToCart, deleteToCart, removeToCart }) => {
     return (
@@ -29,35 +29,30 @@ const CartItem = ({ thumbnail, price, title, quantity, addToCart, deleteToCart, 
 
 const Cart = () => {
     const cartCheckboxId        = useId();
+    const sidebarRef            = useRef();
     const [ isOpen, setIsOpen ] = useState(false);
     const { cart, clearCart, addToCart, deleteToCart, removeToCart } = useCart();
 
-    const handleClick = (e) => {
-        setIsOpen(!isOpen);
-
-        // let menuButton  = document.getElementById("cart-button");
-        let sidebarCart = document.getElementById("sidebar-cart");
-
-
-        console.log("sidebarCart.classList", sidebarCart.classList);
-
-        if (!sidebarCart.contains(e.target) ) {
-            // menuButton.classList.remove("active");
-            sidebarCart.classList.remove("active");
+    useEffect(() => {
+        const handler = (e) => {
+            if (!sidebarRef.current.contains(e.target)) {
+                setIsOpen(false);
+            }
         }
-    };
+        document.addEventListener('mousedown', handler);
+    }, [ isOpen ]);
 
     return (
         <>
-            <label className = "cart-button" htmlFor = {  cartCheckboxId }>
-                <button id = 'cart-button' onClick = { () => handleClick() }>
+            <label className = 'cart-button' htmlFor = { cartCheckboxId }>
+                <button id = 'cart-button' onClick = { () => setIsOpen(!isOpen) }>
                     <CartIcon />
                 </button>
             </label>
-            <input id = { cartCheckboxId } type = "checkbox" hidden/>
+            <input id = { cartCheckboxId } type = 'checkbox' hidden/>
 
-            <aside id = 'sidebar-cart' className = { `cart ${ isOpen ? 'active' : '' }` }>
-                <ul>
+            <aside id = 'sidebar-cart' ref = { sidebarRef } className = { `cart ${ isOpen ? 'active' : '' }` }>
+                <ul className = 'cart__products'>
                     { 
                         cart.map( (product) => (
                             <CartItem
@@ -71,9 +66,15 @@ const Cart = () => {
                     }
                 </ul>
 
-                <button onClick = { clearCart }>
-                    <ClearCartIcon />
-                </button>
+                <div className = 'cart__summary'>
+                    <button onClick = { clearCart }>
+                        <ClearCartIcon />
+                    </button>
+                    <div className = 'summary__'>
+                        <strong>Total: </strong>
+                        <span>${ cart.reduce( (acc, product) => acc + product.price * product.quantity, 0 ) }</span>
+                    </div>
+                </div>
             </aside>
         </>
     )

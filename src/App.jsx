@@ -1,4 +1,5 @@
-import { useState } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useState, useEffect } from "react";
 import { Products } from "@/components/Products/Products";
 import { useFilters } from "@/hooks/useFilters";
 import { CartProvider } from "@/context/cart";
@@ -7,13 +8,26 @@ import { IS_DEVELOPMENT } from "./config";
 import Header from "@/components/Headers/Header";
 import Footer from "@/components/Footer/Footer";
 import Cart from "@/components/Cart/Cart";
+import Pagination from "./components/Pagination/Pagination";
 import ContainerGradient from "@/components/ContainerGradient/ContainerGradient";
 
 const App = () => {
 
-    const [products] = useState(initialProducts)
-    const { filters, filterProducts } = useFilters()
-    const filteredProducts = filterProducts(products)
+    const [ products ]                  = useState(initialProducts)
+    const [ filterData, setFilterData ] = useState([]);
+    const [ page, setPage ]             = useState(0);
+    const { filters, filterProducts }   = useFilters()
+    const filteredProducts              = filterProducts(filterData || products)
+
+    const n = 10;
+
+    useEffect(() => {
+        setFilterData(
+            products.filter((item, index) => {
+                return (index >= page * n) & (index < (page + 1) * n);
+            })
+        );
+    }, [ page ]);
 
     return (
         <CartProvider>
@@ -21,9 +35,14 @@ const App = () => {
             <Header />
             <Cart />
             <Products products = { filteredProducts }/>
+            <Pagination 
+                setPage   = { setPage }
+                products  = { products }
+                quantity  = { n }
+            />
             { IS_DEVELOPMENT && <Footer filters = { filters }/> }
         </CartProvider>
     )
 }
 
-export default App
+export default App;
