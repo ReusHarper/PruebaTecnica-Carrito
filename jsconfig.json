@@ -9,7 +9,7 @@
             "@context/*": ["./src/context/*"],
             "@hooks/*": ["./src/hooks/*"],
             "@moks/*": ["./src/mocks/*"],
-            "@reducers/*": ["./src/reducers/*"],
+            "@pages/*": ["./src/pages/*"],
         }
     },
     "include": ["src"],

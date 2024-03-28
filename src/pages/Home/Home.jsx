@@ -3,8 +3,8 @@ import { useState, useEffect } from "react";
 import { Products } from "@/components/Products/Products";
 import { useFilters } from "@/hooks/useFilters";
 import { CartProvider } from "@/context/cart";
-import { FiltersProvider } from '@/context/filters';
 import { products as initialProducts } from "@/mocks/products.json";
+import { FiltersProvider } from '@/context/filters';
 import { IS_DEVELOPMENT } from "@/config";
 import Header from "@/components/Headers/Header";
 import Footer from "@/components/Footer/Footer";
@@ -12,7 +12,7 @@ import Cart from "@/components/Cart/Cart";
 import Pagination from "@/components/Pagination/Pagination";
 import ContainerGradient from "@/components/ContainerGradient/ContainerGradient";
 
-const Home = () => {
+const HomeContent = () => {
 
     const [ products ]                  = useState(initialProducts)
     const [ filterData, setFilterData ] = useState([]);
@@ -31,21 +31,27 @@ const Home = () => {
     }, [ page ]);
 
     return (
-        <FiltersProvider>
-            <CartProvider>
-                <ContainerGradient/>
-                <Header />
-                <Cart />
-                <Products products = { filteredProducts }/>
-                <Pagination 
-                    setPage   = { setPage }
-                    products  = { products }
-                    quantity  = { n }
-                />
-                { IS_DEVELOPMENT && <Footer filters = { filters }/> }
-            </CartProvider>
-        </FiltersProvider>
+        <CartProvider>
+            <ContainerGradient/>
+            <Header />
+            <Cart />
+            <Products products = { filteredProducts }/>
+            <Pagination 
+                setPage   = { setPage }
+                products  = { products }
+                quantity  = { n }
+            />
+            { IS_DEVELOPMENT && <Footer filters = { filters }/> }
+        </CartProvider>
     )
 }
+
+const Home = () => {
+    return (
+        <FiltersProvider>
+            <HomeContent />
+        </FiltersProvider>
+    )
+};
 
 export default Home;

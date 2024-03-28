@@ -5,7 +5,8 @@
         "module": "ESNext",
         "moduleResolution": "bundler",
         "allowSyntheticDefaultImports": true,
-        "types": ["cypress"]
     },
-    "include": ["vite.config.ts"]
+    // "include": ["src"],
+    "include": ["vite.config.js"],
+    "references": [ { "path": "./jsconfig.node.json" } ]
 }

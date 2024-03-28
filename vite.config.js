@@ -10,7 +10,7 @@ export default defineConfig({
       '@context': path.resolve(__dirname, './src/context'),
       '@hooks': path.resolve(__dirname, './src/hooks'),
       '@mocks': path.resolve(__dirname, './src/mocks'),
-      '@reducers': path.resolve(__dirname, './src/reducers'),
+      '@pages': path.resolve(__dirname, './src/pages'),
     }
   },
   plugins: [react()],

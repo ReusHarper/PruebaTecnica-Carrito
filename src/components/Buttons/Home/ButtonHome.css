@@ -1,0 +1,23 @@
+a {
+    text-decoration : none;
+    color           : #ffffff;
+}
+
+.button__home {
+    border-radius    : 8px;
+    border           : 1px solid transparent;
+    padding          : 0.6em 1.2em;
+    font-size        : 1em;
+    font-weight      : 500;
+    font-family      : inherit;
+    border           : solid 0.2rem #ffffff;
+    color            : #ffffff;
+    cursor           : pointer;
+    transition       : all 0.5s;
+}
+
+.button__home:hover {
+    background-color : #1a1a1a;
+    color            : #ffffff;
+    border           : solid 0.2rem #1a1a1a;
+}
